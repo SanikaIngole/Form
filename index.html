@@ -30,125 +30,117 @@ textarea{min-height:80px;resize:vertical}
 </style>
 </head>
 <body>
-  <main class="container">
-    <header class="header" role="banner" aria-labelledby="formTitle">
-      <div style="flex:1">
-        <h1 class="title" id="formTitle">रामानंदाचार्य नरेन्द्राचार्यजी यांचा पादुका दर्शन सोहळा</h1>
-        <div class="meta">दिनांक: 12 डिसेंबर 2025 — शुक्रवार, सकाळी 9 वाजता</div>
-        <div class="meta">स्थळ: महाराजा अग्रसेन भवन, परतवाडा -अंजनगाव रोडवर, परतवाडा, ता. अचलपूर, जिल्हा अमरावती</div>
-      </div>
-      <div style="min-width:150px;text-align:right">
-        <div style="background:#fff;padding:8px;border-radius:10px;font-weight:700;color:#3d2518">नोंदणी फॉर्म</div>
-        <div class="small" style="margin-top:8px">कृपया योग्य माहिती भरा</div>
-      </div>
-    </header>
+<main class="container">
+<header class="header" role="banner" aria-labelledby="formTitle">
+  <div style="flex:1">
+    <h1 class="title" id="formTitle">रामानंदाचार्य नरेन्द्राचार्यजी यांचा पादुका दर्शन सोहळा</h1>
+    <div class="meta">दिनांक: 12 डिसेंबर 2025 — शुक्रवार, सकाळी 9 वाजता</div>
+    <div class="meta">स्थळ: महाराजा अग्रसेन भवन, परतवाडा -अंजनगाव रोडवर, परतवाडा, ता. अचलपूर, जिल्हा अमरावती</div>
+  </div>
+  <div style="min-width:150px;text-align:right">
+    <div style="background:#fff;padding:8px;border-radius:10px;font-weight:700;color:#3d2518">नोंदणी फॉर्म</div>
+    <div class="small" style="margin-top:8px">कृपया योग्य माहिती भरा</div>
+  </div>
+</header>
 
-    <section class="card" aria-label="सूचना">
-      <div style="display:flex;gap:10px;align-items:flex-start">
-        <div style="font-size:20px">🌸</div>
-        <div>
-          <div style="font-weight:700">उपासक दिक्षा नोंदणी</div>
-          <p class="instructions small" style="margin:6px 0 0 0">
-            • ज्या भक्तगणांना सदर पादुका दर्शन सोहळ्यामध्ये उपासक दिक्षा घ्यायची आहे, त्यांनी खालील माहिती भरून फॉर्म सबमिट करावा.<br>
-            • उपासक दिक्षा घेण्यासाठी वय किमान 7 वर्ष असणे आवश्यक आहे.
-          </p>
-        </div>
-      </div>
-    </section>
+<section class="card" aria-label="सूचना">
+  <div style="display:flex;gap:10px;align-items:flex-start">
+    <div style="font-size:20px">🌸</div>
+    <div>
+      <div style="font-weight:700">उपासक दिक्षा नोंदणी</div>
+      <p class="instructions small" style="margin:6px 0 0 0">
+        • ज्या भक्तगणांना सदर पादुका दर्शन सोहळ्यामध्ये उपासक दिक्षा घ्यायची आहे, त्यांनी खालील माहिती भरून फॉर्म सबमिट करावा.<br>
+        • उपासक दिक्षा घेण्यासाठी वय किमान 7 वर्ष असणे आवश्यक आहे.
+      </p>
+    </div>
+  </div>
+</section>
 
-    <form id="regForm" class="card" autocomplete="off" novalidate>
-      <div class="form-grid">
-        <div class="field">
-          <label for="name">नाव <span class="required">*</span></label>
-          <input id="name" name="name" type="text" required placeholder="आपले पूर्ण नाव">
-        </div>
+<form id="regForm" class="card" autocomplete="off" novalidate>
+  <div class="form-grid">
+    <div class="field">
+      <label for="name">नाव <span class="required">*</span></label>
+      <input id="name" name="name" type="text" required placeholder="आपले पूर्ण नाव">
+    </div>
+    <div class="field">
+      <label for="phone">मोबाईल नंबर <span class="required">*</span></label>
+      <input id="phone" name="phone" type="tel" inputmode="numeric" pattern="[0-9]{10}" required placeholder="९८XXXXXXXX">
+      <div class="small">10 अंकी मोबाइल नंबर भरा</div>
+    </div>
+    <div class="field">
+      <label for="census">जनगणना नंबर</label>
+      <input id="census" name="census" type="text" placeholder="(माहिती असल्यास टाका)">
+    </div>
+    <div class="field">
+      <label for="age">वय <span class="required">*</span></label>
+      <input id="age" name="age" type="text" inputmode="numeric" pattern="\d+" required placeholder="उदा. 20">
+    </div>
+    <div class="field">
+      <label for="district">जिल्हा <span class="required">*</span></label>
+      <select id="district" name="district" required>
+        <option value="अमरावती" selected>अमरावती</option>
+        <option value="इतर">इतर</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="taluka">तालुका <span class="required">*</span></label>
+      <select id="taluka" name="taluka" required>
+        <option value="अमरावती">अमरावती</option>
+        <option value="अंजनगाव सुर्जी">अंजनगाव सुर्जी</option>
+        <option value="अचलपूर">अचलपूर</option>
+        <option value="नांदगाव खंडेश्वर">नांदगाव खंडेश्वर</option>
+        <option value="मोर्शी">मोर्शी</option>
+        <option value="वरुड">वरुड</option>
+        <option value="तिवसा">तिवसा</option>
+        <option value="भातकुली">भातकुली</option>
+        <option value="चांदूरबाजार">चांदूरबाजार</option>
+        <option value="दर्यापूर">दर्यापूर</option>
+        <option value="धामणगाव रेल्वे">धामणगाव रेल्वे</option>
+        <option value="चांदूर रेल्वे">चांदूर रेल्वे</option>
+        <option value="धारणी">धारणी</option>
+        <option value="चिखलदरा">चिखलदरा</option>
+        <option value="इतर">इतर</option>
+      </select>
+    </div>
+    <div class="field" style="grid-column:1/-1">
+      <label for="village">मुक्कामाचे गाव <span class="required">*</span></label>
+      <input id="village" name="village" type="text" required placeholder="आपले गाव (मुक्काम)">
+    </div>
+    <div class="field" style="grid-column:1/-1">
+      <label for="notes">अधिक माहिती / अडचणी</label>
+      <textarea id="notes" name="notes" placeholder="काही अडचण असल्यास लिहा"></textarea>
+    </div>
+  </div>
 
-        <div class="field">
-          <label for="phone">मोबाईल नंबर <span class="required">*</span></label>
-          <input id="phone" name="phone" type="tel" inputmode="numeric" pattern="[0-9]{10}" required placeholder="९८XXXXXXXX">
-          <div class="small">10 अंकी मोबाइल नंबर भरा</div>
-        </div>
+  <div style="margin-top:12px" class="small">
+    काही अडचण असल्यास संपर्क: 9922411193, 9371624404, 8983425389, 9145652208, 9923567257, 9623009466
+  </div>
 
-        <div class="field">
-          <label for="census">जनगणना नंबर</label>
-          <input id="census" name="census" type="text" placeholder="(माहिती असल्यास टाका)">
-        </div>
+  <div class="actions">
+    <button type="submit" class="btn" id="submitBtn">सबमिट</button>
+    <button type="button" class="btn ghost" id="clearBtn">फॉर्म क्लिअर</button>
+    <div class="small">सबमिट केल्यानंतर तुम्हाला JSON / CSV डाउनलोड करायला मिळेल (ऑफलाइन)</div>
+  </div>
 
-        <div class="field">
-          <label for="age">वय <span class="required">*</span></label>
-          <input id="age" name="age" type="text" inputmode="numeric" pattern="\d+" required placeholder="उदा. 20">
-        </div>
+  <div id="messageArea" aria-live="polite"></div>
+</form>
 
-        <div class="field">
-          <label for="district">जिल्हा <span class="required">*</span></label>
-          <select id="district" name="district" required>
-            <option value="अमरावती" selected>अमरावती</option>
-            <option value="इतर">इतर</option>
-          </select>
-        </div>
+<footer class="footer">तुम्ही जगा, दुसऱ्याला जगवा — जय सियाराम</footer>
 
-        <div class="field">
-          <label for="taluka">तालुका <span class="required">*</span></label>
-          <select id="taluka" name="taluka" required>
-            <option value="अमरावती">अमरावती</option>
-            <option value="अंजनगाव सुर्जी">अंजनगाव सुर्जी</option>
-            <option value="अचलपूर">अचलपूर</option>
-            <option value="नांदगाव खंडेश्वर">नांदगाव खंडेश्वर</option>
-            <option value="मोर्शी">मोर्शी</option>
-            <option value="वरुड">वरुड</option>
-            <option value="तिवसा">तिवसा</option>
-            <option value="भातकुली">भातकुली</option>
-            <option value="चांदूरबाजार">चांदूरबाजार</option>
-            <option value="दर्यापूर">दर्यापूर</option>
-            <option value="धामणगाव रेल्वे">धामणगाव रेल्वे</option>
-            <option value="चांदूर रेल्वे">चांदूर रेल्वे</option>
-            <option value="धारणी">धारणी</option>
-            <option value="चिखलदरा">चिखलदरा</option>
-            <option value="इतर">इतर</option>
-          </select>
-        </div>
-
-        <div class="field" style="grid-column:1/-1">
-          <label for="village">मुक्कामाचे गाव <span class="required">*</span></label>
-          <input id="village" name="village" type="text" required placeholder="आपले गाव (मुक्काम)">
-        </div>
-
-        <div class="field" style="grid-column:1/-1">
-          <label for="notes">अधिक माहिती / अडचणी</label>
-          <textarea id="notes" name="notes" placeholder="काही अडचण असल्यास लिहा"></textarea>
-        </div>
-      </div>
-
-      <div style="margin-top:12px" class="small">
-        काही अडचण असल्यास संपर्क: 9922411193, 9371624404, 8983425389, 9145652208, 9923567257, 9623009466
-      </div>
-
-      <div class="actions">
-        <button type="submit" class="btn" id="submitBtn">सबमिट</button>
-        <button type="button" class="btn ghost" id="clearBtn">फॉर्म क्लिअर</button>
-        <div class="small">सबमिट केल्यानंतर तुम्हाला JSON / CSV डाउनलोड करायला मिळेल (ऑफलाइन)</div>
-      </div>
-
-      <div id="messageArea" aria-live="polite"></div>
-    </form>
-
-    <footer class="footer">तुम्ही जगा, दुसऱ्याला जगवा — जय सियाराम</footer>
-  </main>
-
-  <template id="modalT">
-    <div class="modal" id="modalRoot" role="dialog" aria-modal="true" style="position:fixed;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;padding:16px">
-      <div style="background:#fff;border-radius:12px;padding:16px;max-width:720px;width:100%;">
-        <h3 style="margin:0 0 10px 0">नोंदणी तपशील</h3>
-        <div id="modalContent" style="font-size:13px;color:#222;white-space:pre-wrap;max-height:50vh;overflow:auto"></div>
-        <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-          <button id="downloadJson" class="btn">Download JSON</button>
-          <button id="downloadCsv" class="btn">Download CSV</button>
-          <button id="copyData" class="btn ghost">Copy JSON</button>
-          <button id="closeModal" class="btn ghost">Close</button>
-        </div>
+<template id="modalT">
+  <div class="modal" id="modalRoot" role="dialog" aria-modal="true" style="position:fixed;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;padding:16px">
+    <div style="background:#fff;border-radius:12px;padding:16px;max-width:720px;width:100%;">
+      <h3 style="margin:0 0 10px 0">नोंदणी तपशील</h3>
+      <div id="modalContent" style="font-size:13px;color:#222;white-space:pre-wrap;max-height:50vh;overflow:auto"></div>
+      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+        <button id="downloadJson" class="btn">Download JSON</button>
+        <button id="downloadCsv" class="btn">Download CSV</button>
+        <button id="copyData" class="btn ghost">Copy JSON</button>
+        <button id="closeModal" class="btn ghost">Close</button>
       </div>
     </div>
-  </template>
+  </div>
+</template>
 
 <script>
 (function(){
@@ -187,59 +179,67 @@ textarea{min-height:80px;resize:vertical}
     URL.revokeObjectURL(url);
   }
 
-  function toCsv(obj) {
-  const keys = Object.keys(obj);
-
-  // Escape values properly for CSV
-  const values = keys.map(k => {
-    let val = obj[k] || '';
-    val = String(val).replace(/"/g, '""'); // Escape double quotes
-    if (val.includes(',') || val.includes('"') || val.includes('\n')) {
-      val = `"${val}"`; // Wrap in quotes if needed
-    }
-    return val;
-  });
-
-  return keys.join(',') + "\n" + values.join(',');
-}
-
+  function toCsv(obj){
+    const keys = Object.keys(obj);
+    const values = keys.map(k=>{
+      let val = obj[k]||'';
+      val = String(val).replace(/"/g,'""');
+      if(val.includes(',')||val.includes('"')||val.includes('\n')) val = `"${val}"`;
+      return val;
+    });
+    return keys.join(',') + "\n" + values.join(',');
   }
 
   form.addEventListener('submit', function(e){
-  e.preventDefault();
-  submitBtn.disabled = true;
-  msg.innerHTML = '';
+    e.preventDefault();
+    submitBtn.disabled = true;
+    msg.innerHTML = '';
 
-  const fd = new FormData(form);
-  const err = validate(fd);
-  if(err){
-    msg.innerHTML = `<div class="success" style="background:#fff0f0;border-left-color:#d63a2a;color:#8a2b1f">${err}</div>`;
-    submitBtn.disabled = false;
-    return;
-  }
-
-  // Prepare URL-encoded form data for Google Apps Script
-  const params = new URLSearchParams(fd);
-
-  fetch("https://script.google.com/macros/s/AKfycbwnV8t_qzHgHd3ZMVFk7HPc3lPjeArSxQbzBizsLemShHFgwaadV95GrEF-jGBQ96ud/exec", {  // <-- Replace with your Apps Script URL
-    method: "POST",
-    body: params
-  })
-  .then(response => response.json())
-  .then(res => {
-    if(res.status === "success"){
-      msg.innerHTML = '<div class="success">नोंदणी यशस्वी! — JSON/CSV डाउनलोड करा किंवा कॉपी करा.</div>';
-      form.reset();
-    } else {
-      msg.innerHTML = `<div class="success" style="background:#fff0f0;border-left-color:#d63a2a;color:#8a2b1f">त्रुटी: ${res.message}</div>`;
+    const fd = new FormData(form);
+    const err = validate(fd);
+    if(err){
+      msg.innerHTML = `<div class="success" style="background:#fff0f0;border-left-color:#d63a2a;color:#8a2b1f">${err}</div>`;
+      submitBtn.disabled = false;
+      return;
     }
-    submitBtn.disabled = false;
-  })
-  .catch(err => {
-    msg.innerHTML = `<div class="success" style="background:#fff0f0;border-left-color:#d63a2a;color:#8a2b1f">त्रुटी: ${err.message}</div>`;
-    submitBtn.disabled = false;
-  
 
+    const data = toJson(fd);
+
+    // Send to Google Apps Script
+    const params = new URLSearchParams(fd);
+    fetch("YOUR_WEB_APP_URL_HERE", {  // <-- REPLACE with your deployed Web App URL
+      method: "POST",
+      body: params
+    })
+    .then(response => response.json())
+    .then(res => {
+      if(res.status === "success"){
+        msg.innerHTML = '<div class="success">नोंदणी यशस्वी! — JSON/CSV डाउनलोड करा किंवा कॉपी करा.</div>';
+        form.reset();
+      } else {
+        msg.innerHTML = `<div class="success" style="background:#fff0f0;border-left-color:#d63a2a;color:#8a2b1f">त्रुटी: ${res.message}</div>`;
+      }
+      submitBtn.disabled = false;
+    })
+    .catch(err => {
+      msg.innerHTML = `<div class="success" style="background:#fff0f0;border-left-color:#d63a2a;color:#8a2b1f">त्रुटी: ${err.message}</div>`;
+      submitBtn.disabled = false;
+    });
+
+    // Show modal for JSON/CSV download
+    const modal = modalT.content.cloneNode(true);
+    document.body.appendChild(modal);
+    const modalRoot = document.getElementById('modalRoot');
+    const modalContent = document.getElementById('modalContent');
+    modalContent.textContent = JSON.stringify(data, null, 2);
+
+    document.getElementById('downloadJson').onclick = ()=> download('registration.json', JSON.stringify(data, null, 2),'application/json');
+    document.getElementById('downloadCsv').onclick = ()=> download('registration.csv', toCsv(data),'text/csv');
+    document.getElementById('copyData').onclick = async ()=>{
+      try{ await navigator.clipboard.writeText(JSON.stringify(data, null, 2)); alert('JSON कॉपी झाले.'); }
+      catch(e){ alert('कॉपी करण्यास अडचण'); }
+    };
+    document.getElementById('closeModal').onclick = ()=> { modalRoot.remove(); };
   });
 
   clearBtn.addEventListener('click', ()=>{ if(confirm('फॉर्म साफ करायचा आहे का?')) form.reset(); });
@@ -251,4 +251,3 @@ textarea{min-height:80px;resize:vertical}
 </script>
 </body>
 </html>
-
