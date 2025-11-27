@@ -187,10 +187,22 @@ textarea{min-height:80px;resize:vertical}
     URL.revokeObjectURL(url);
   }
 
-  function toCsv(obj){
-    const keys = Object.keys(obj);
-    const values = keys.map(k => "${String(obj[k]||'').replace(/"/g,'""')}");
-    return keys.join(',') + "\n" + values.join(',');
+  function toCsv(obj) {
+  const keys = Object.keys(obj);
+
+  // Escape values properly for CSV
+  const values = keys.map(k => {
+    let val = obj[k] || '';
+    val = String(val).replace(/"/g, '""'); // Escape double quotes
+    if (val.includes(',') || val.includes('"') || val.includes('\n')) {
+      val = `"${val}"`; // Wrap in quotes if needed
+    }
+    return val;
+  });
+
+  return keys.join(',') + "\n" + values.join(',');
+}
+
   }
 
   form.addEventListener('submit', function(e){
@@ -239,3 +251,4 @@ textarea{min-height:80px;resize:vertical}
 </script>
 </body>
 </html>
+
