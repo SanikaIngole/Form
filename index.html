@@ -119,7 +119,6 @@ textarea{min-height:80px;resize:vertical}
   <div class="actions">
     <button type="submit" class="btn" id="submitBtn">सबमिट</button>
     <button type="button" class="btn ghost" id="clearBtn">फॉर्म क्लिअर</button>
-    <div class="small">सबमिट केल्यानंतर तुम्हाला JSON / CSV डाउनलोड करायला मिळेल (ऑफलाइन)</div>
   </div>
 
   <div id="messageArea" aria-live="polite"></div>
@@ -131,14 +130,6 @@ textarea{min-height:80px;resize:vertical}
   <div class="modal" id="modalRoot" role="dialog" aria-modal="true" style="position:fixed;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;padding:16px">
     <div style="background:#fff;border-radius:12px;padding:16px;max-width:720px;width:100%;">
       <h3 style="margin:0 0 10px 0">नोंदणी तपशील</h3>
-      <div id="modalContent" style="font-size:13px;color:#222;white-space:pre-wrap;max-height:50vh;overflow:auto"></div>
-      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-        <button id="downloadJson" class="btn">Download JSON</button>
-        <button id="downloadCsv" class="btn">Download CSV</button>
-        <button id="copyData" class="btn ghost">Copy JSON</button>
-        <button id="closeModal" class="btn ghost">Close</button>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -146,7 +137,6 @@ textarea{min-height:80px;resize:vertical}
 (function(){
   const form = document.getElementById('regForm');
   const msg = document.getElementById('messageArea');
-  const modalT = document.getElementById('modalT');
   const submitBtn = document.getElementById('submitBtn');
   const clearBtn = document.getElementById('clearBtn');
 
@@ -163,33 +153,6 @@ textarea{min-height:80px;resize:vertical}
     return null;
   }
 
-  function toJson(fd){
-    const obj = {};
-    for(const [k,v] of fd.entries()) obj[k]=v;
-    obj.submittedAt = new Date().toISOString();
-    return obj;
-  }
-
-  function download(filename, content, mime='application/json'){
-    const blob = new Blob([content], {type: mime});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url; a.download = filename;
-    document.body.appendChild(a); a.click(); a.remove();
-    URL.revokeObjectURL(url);
-  }
-
-  function toCsv(obj){
-    const keys = Object.keys(obj);
-    const values = keys.map(k=>{
-      let val = obj[k]||'';
-      val = String(val).replace(/"/g,'""');
-      if(val.includes(',')||val.includes('"')||val.includes('\n')) val = `"${val}"`;
-      return val;
-    });
-    return keys.join(',') + "\n" + values.join(',');
-  }
-
   form.addEventListener('submit', function(e){
     e.preventDefault();
     submitBtn.disabled = true;
@@ -203,54 +166,37 @@ textarea{min-height:80px;resize:vertical}
       return;
     }
 
-    const data = toJson(fd);
-
-    // Send to Google Apps Script
-    const params = new URLSearchParams(fd);
-
-    // <-- REPLACE WEB_APP_URL_HERE with your deployed Apps Script web app URL
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycby1B8gHe5f5vUDIf94mjH2sbydXwNwjF_xmgP9h_j1LlEsDB_zRNtR4llGnPz4elPRUXg/exec";
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxW3MYwgNTmPLotliFxe-iX-N5yk74tK_CuUukjRlsmNXdj9yxYHhNEhtooAM7vEFkhLw/exec";
 
     fetch(WEB_APP_URL, {
-    method: "POST",
-    body: new FormData(form)
-    });
-
+      method: "POST",
+      body: fd
+    })
     .then(() => {
-      // we assume success if fetch resolves — Apps Script appends row server-side
-      msg.innerHTML = '<div class="success">नोंदणी यशस्वी! — JSON/CSV डाउनलोड करा किंवा कॉपी करा.</div>';
+      msg.innerHTML = '<div class="success">नोंदणी यशस्वी!</div>';
       form.reset();
     })
     .catch(err => {
-      msg.innerHTML = `<div class="success" style="background:#fff0f0;border-left-color:#d63a2a;color:#8a2b1f">त्रुटी: ${err.message || err}</div>`;
+      msg.innerHTML = `<div class="success" style="background:#fff0f0;border-left-color:#d63a2a;color:#8a2b1f">त्रुटी: ${err.message}</div>`;
     })
     .finally(()=> { submitBtn.disabled = false; });
-
-    // Show modal for JSON/CSV download (client-side copy)
-    const modal = modalT.content.cloneNode(true);
-    document.body.appendChild(modal);
-    const modalRoot = document.getElementById('modalRoot');
-    const modalContent = document.getElementById('modalContent');
-    modalContent.textContent = JSON.stringify(data, null, 2);
-
-    document.getElementById('downloadJson').onclick = ()=> download('registration.json', JSON.stringify(data, null, 2),'application/json');
-    document.getElementById('downloadCsv').onclick = ()=> download('registration.csv', toCsv(data),'text/csv');
-    document.getElementById('copyData').onclick = async ()=>{
-      try{ await navigator.clipboard.writeText(JSON.stringify(data, null, 2)); alert('JSON कॉपी झाले.'); }
-      catch(e){ alert('कॉपी करण्यास अडचण'); }
-    };
-    document.getElementById('closeModal').onclick = ()=> { modalRoot.remove(); };
   });
 
-  clearBtn.addEventListener('click', ()=>{ if(confirm('फॉर्म साफ करायचा आहे का?')) form.reset(); });
+  clearBtn.addEventListener('click', ()=>{ 
+    if(confirm('फॉर्म साफ करायचा आहे का?')) form.reset(); 
+  });
 
+  // phone validation
   const phoneInput = document.getElementById('phone');
-  phoneInput.addEventListener('input', function(){ this.value = this.value.replace(/\D/g,'').slice(0,10); });
+  phoneInput.addEventListener('input', function(){ 
+    this.value = this.value.replace(/\D/g,'').slice(0,10); 
+  });
 
 })();
 </script>
 </body>
 </html>
+
 
 
 
