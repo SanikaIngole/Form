@@ -166,14 +166,14 @@ textarea{min-height:80px;resize:vertical}
       return;
     }
 
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbylgREIgwxxfYDQnbSTBIhxkgGyAEfb7_hvYYfnqxEV7c0z-vStZj3DQDdgwQck5pE6cQ/exec";
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzRkJtKDGEnkDCAeqZphOFdwq08ipn6vnz0K7bWoSdaflBu_yFXUz-QHhhzFiJiudhMwg/exec";
 
     fetch(WEB_APP_URL, {
       method: "POST",
       body: fd
     })
     .then(() => {
-      msg.innerHTML = '<div class="success">नोंदणी यशस्वी!</div>';
+      msg.innerHTML = '<div class="success">नोंदणी यशस्वी!</div>'; 
       form.reset();
     })
     .catch(err => {
@@ -196,6 +196,7 @@ textarea{min-height:80px;resize:vertical}
 </script>
 </body>
 </html>
+
 
 
 
