@@ -209,12 +209,13 @@ textarea{min-height:80px;resize:vertical}
     const params = new URLSearchParams(fd);
 
     // <-- REPLACE WEB_APP_URL_HERE with your deployed Apps Script web app URL
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxHTXMA8Nn1Nx7hd_nrQMnI3D9jpwrg3CMQ9e95hVH_3vXLbqG4HMyoKcBvND6zYS9P6g/exec";
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycby1B8gHe5f5vUDIf94mjH2sbydXwNwjF_xmgP9h_j1LlEsDB_zRNtR4llGnPz4elPRUXg/exec";
 
-    fetch("https://script.google.com/macros/s/AKfycbxHTXMA8Nn1Nx7hd_nrQMnI3D9jpwrg3CMQ9e95hVH_3vXLbqG4HMyoKcBvND6zYS9P6g/exec", {
-      method: "POST",
-      body: new FormData(form)
-    })
+    fetch(WEB_APP_URL, {
+    method: "POST",
+    body: new FormData(form)
+    });
+
     .then(() => {
       // we assume success if fetch resolves — Apps Script appends row server-side
       msg.innerHTML = '<div class="success">नोंदणी यशस्वी! — JSON/CSV डाउनलोड करा किंवा कॉपी करा.</div>';
@@ -250,6 +251,7 @@ textarea{min-height:80px;resize:vertical}
 </script>
 </body>
 </html>
+
 
 
 
