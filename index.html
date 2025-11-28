@@ -213,7 +213,7 @@ textarea{min-height:80px;resize:vertical}
 
     fetch("https://script.google.com/macros/s/AKfycbz2OA5CXzoE1Ba80eOYKbSf6Sqm-sOi-9zZ5jdZNq9XAtgXPAlbosCzZ3DZVv9aZXJZbA/exec", {
       method: "POST",
-      body: params
+      body: new FormData(form)
     })
     .then(() => {
       // we assume success if fetch resolves — Apps Script appends row server-side
@@ -250,4 +250,5 @@ textarea{min-height:80px;resize:vertical}
 </script>
 </body>
 </html>
+
 
