@@ -95,7 +95,7 @@ textarea{min-height:80px;resize:vertical}
         <option value="भातकुली">भातकुली</option>
         <option value="चांदूरबाजार">चांदूरबाजार</option>
         <option value="दर्यापूर">दर्यापूर</option>
-        <option value="धामणगाव रेल्वे">धामणगाव रेल्वे</option>
+        <option value="धामणगाव रेल्वे">धामणगाव रेल्वे</option>
         <option value="चांदूर रेल्वे">चांदूर रेल्वे</option>
         <option value="धारणी">धारणी</option>
         <option value="चिखलदरा">चिखलदरा</option>
@@ -207,26 +207,25 @@ textarea{min-height:80px;resize:vertical}
 
     // Send to Google Apps Script
     const params = new URLSearchParams(fd);
-    fetch("https://script.google.com/macros/s/AKfycbxnc3beAEAkJNPgp54qYyIgLl6wVdvR1o0-sdFZ-LFrJgo6_bN3XiGJk4l-XaO6x7Pe/exec", {  // <-- REPLACE this with your deployed Web App URL
+
+    // <-- REPLACE WEB_APP_URL_HERE with your deployed Apps Script web app URL
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz2OA5CXzoE1Ba80eOYKbSf6Sqm-sOi-9zZ5jdZNq9XAtgXPAlbosCzZ3DZVv9aZXJZbA/exec";
+
+    fetch("https://script.google.com/macros/s/AKfycbz2OA5CXzoE1Ba80eOYKbSf6Sqm-sOi-9zZ5jdZNq9XAtgXPAlbosCzZ3DZVv9aZXJZbA/exec", {
       method: "POST",
       body: params
     })
-    .then(response => response.json())
-    .then(res => {
-      if(res.status === "success"){
-        msg.innerHTML = '<div class="success">नोंदणी यशस्वी! — JSON/CSV डाउनलोड करा किंवा कॉपी करा.</div>';
-        form.reset();
-      } else {
-        msg.innerHTML = `<div class="success" style="background:#fff0f0;border-left-color:#d63a2a;color:#8a2b1f">त्रुटी: ${res.message}</div>`;
-      }
-      submitBtn.disabled = false;
+    .then(() => {
+      // we assume success if fetch resolves — Apps Script appends row server-side
+      msg.innerHTML = '<div class="success">नोंदणी यशस्वी! — JSON/CSV डाउनलोड करा किंवा कॉपी करा.</div>';
+      form.reset();
     })
     .catch(err => {
-      msg.innerHTML = `<div class="success" style="background:#fff0f0;border-left-color:#d63a2a;color:#8a2b1f">त्रुटी: ${err.message}</div>`;
-      submitBtn.disabled = false;
-    });
+      msg.innerHTML = `<div class="success" style="background:#fff0f0;border-left-color:#d63a2a;color:#8a2b1f">त्रुटी: ${err.message || err}</div>`;
+    })
+    .finally(()=> { submitBtn.disabled = false; });
 
-    // Show modal for JSON/CSV download
+    // Show modal for JSON/CSV download (client-side copy)
     const modal = modalT.content.cloneNode(true);
     document.body.appendChild(modal);
     const modalRoot = document.getElementById('modalRoot');
